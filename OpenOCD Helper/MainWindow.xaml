@@ -6,7 +6,74 @@
         xmlns:local="clr-namespace:OpenOCD_Helper"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock x:Name="TbLog" Grid.Column="1" TextWrapping ="Wrap">
+            
+        </TextBlock>
         
+        
+        
+        <Grid ShowGridLines="True" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1" ShowGridLines="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>         
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Label Content="OpenOCD path:" Grid.Row="0"></Label>
+                <Label Content="Target path:" Grid.Row="1"></Label>
+                <Label Content="Interface path:" Grid.Row="2"></Label>
+
+                <Border Grid.Row="0" Grid.Column="1" Margin="5,5,5,5">
+                    <Button Content="Custom"></Button>
+                </Border>
+                <Border Grid.Row="1" Grid.Column="1" Margin="5,5,5,5">
+                    <Button Content="Custom"></Button>
+                </Border>
+                <Border Grid.Row="2" Grid.Column="1" Margin="5,5,5,5">
+                    <Button Content="Custom"></Button>
+                </Border>
+
+            </Grid>
+
+            <StackPanel Grid.Row="2">
+                <Label Content="Device" ></Label>
+                <ComboBox x:Name="CbDevice" DropDownOpened="CbDevice_DropDownOpened" SelectionChanged="CbDevice_SelectionChanged"></ComboBox>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3">
+                <Label Content="Programmer"></Label>
+                <ComboBox x:Name="CbProgrammer" ></ComboBox>
+                <RadioButton Content="SWD"></RadioButton>
+                <RadioButton Content="JTAG"></RadioButton>
+            </StackPanel>
+
+            <StackPanel Grid.Row="4">
+                <Button Content="Find Device" IsEnabled="False"></Button>
+                <Button Content="Erase Chip" IsEnabled="False"></Button>
+                <Button Content="Write Chip" Click="OnButtonClick"/>
+                <Button Content="Read Chip" IsEnabled="False"></Button>
+            </StackPanel>
+
+        </Grid>
     </Grid>
 </Window>
