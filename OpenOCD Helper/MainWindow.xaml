@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OpenOCD_Helper"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="530" Width="800">
     <Grid ShowGridLines="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -20,11 +20,11 @@
         
         <Grid ShowGridLines="True" Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
 
             </Grid.RowDefinitions>
 
@@ -67,13 +67,56 @@
                 <RadioButton Content="JTAG"></RadioButton>
             </StackPanel>
 
-            <StackPanel Grid.Row="4">
-                <Button Content="Find Device" IsEnabled="False"></Button>
-                <Button Content="Erase Chip" IsEnabled="False"></Button>
-                <Button Content="Write Chip" Click="OnButtonClick"/>
-                <Button Content="Read Chip" IsEnabled="False"></Button>
-            </StackPanel>
+            <Grid Grid.Row="4" ShowGridLines="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
 
+                <Border Grid.Row="0" Grid.Column="0" Margin="5,5,5,5">
+                    <Button  Content="Find Device"></Button>
+                </Border>
+                <Border Grid.Row="0" Grid.Column="1" Margin="5,5,5,5">
+                    <Button Content="Reset Device"></Button>
+                </Border>
+                <Border Grid.Row="0" Grid.Column="2" Margin="5,5,5,5">
+                    <Button  Content="Erase Chip"></Button>
+                </Border>                
+                <Border Grid.Row="0" Grid.Column="0" Margin="5,5,5,5">
+                    <Button  Content="Read Chip"></Button>
+                </Border>
+                <Border Grid.Row="1" Grid.Column="0" Margin="5,5,5,5">
+                    <Button  Content="Select flash file"></Button>
+                </Border>
+                <Border Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="5,5,5,5">
+                    <RichTextBox></RichTextBox>
+                </Border>
+                <Border Grid.Row="2" Grid.Column="0" Margin="5,5,5,5">
+                    <Button Content="Write Chip" Click="OnButtonClick"></Button>
+                </Border>
+                <Border Grid.Row="2" Grid.Column="1" Margin="5,5,5,5">
+                    <Label Content="Flash offset:" HorizontalAlignment="Right"></Label>
+                </Border>
+                <Border Grid.Row="2" Grid.Column="3" Margin="5,5,5,5">
+                    <RichTextBox></RichTextBox>
+                </Border>
+
+                <!--<Border Grid.Row="3" Grid.Column="0" Margin="5,5,5,5">
+                    <Button  Content="Select flash file"></Button>
+                </Border>
+                <Border Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="5,5,5,5">
+                    <TextBox></TextBox>
+                </Border>-->
+                
+            </Grid>
         </Grid>
     </Grid>
 </Window>
