@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Text.Json;
 using static System.Net.Mime.MediaTypeNames;
+using System.Collections;
 
 namespace OpenOCD_Helper
 {
@@ -23,17 +24,43 @@ namespace OpenOCD_Helper
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        string pathOpenOCD;
+        string pathTools;
+        string pathInterface;
+
+
         public MainWindow()
         {
             InitializeComponent();
 
 
+
+            foreach (string? path in Environment.GetEnvironmentVariable("PATH").Split(';'))
+            {
+                if (Directory.Exists(path))
+                {
+                    foreach (string files in Directory.GetFiles(path))
+                    {
+                        if (File.Exists(path + "\\openocd.exe"))
+                        {
+                            pathOpenOCD = path + "\\openocd.exe";
+
+                            var test = path.Substring(0, path.LastIndexOf("\\"));
+
+                            var test2 = Directory.GetDirectories(test, "*.*", searchOption: SearchOption.AllDirectories).Where(res => res.Contains("interface")).ToString();
+
+                            break;
+                        }
+                    }
+                }
+                
+            }
+
         }
 
         private void CbDevice_DropDownOpened(object sender, EventArgs e)
         {
-            string folderPath = "G:\\test\\OpenOCD-20230202-0.12.0\\share\\openocd\\scripts\\target"; // Укажите свой путь к папке
+            string folderPath = "D:\\GD_Flasher\\OpenOCD-20230202-0.12.0\\share\\openocd\\scripts\\target"; // Укажите свой путь к папке
             var cb = sender as ComboBox;
 
             cb.Items.Clear();
@@ -78,7 +105,7 @@ namespace OpenOCD_Helper
             p.StartInfo.RedirectStandardOutput = true;
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.CreateNoWindow = true;
-            p.StartInfo.FileName = "G:\\test\\flasher_jlink f4.bat";
+            p.StartInfo.FileName = "D:\\GD_Flasher\\flasher_jlink f4.bat";
             //p.StartInfo.Arguments = "-R C:\\";
 
             p.OutputDataReceived += new DataReceivedEventHandler((s, e) =>
