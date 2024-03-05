@@ -61,7 +61,7 @@ namespace OpenOCD_Helper
         private void CbDevice_DropDownOpened(object sender, EventArgs e)
         {
             string folderPath = "D:\\GD_Flasher\\OpenOCD-20230202-0.12.0\\share\\openocd\\scripts\\target"; // Укажите свой путь к папке
-            var cb = sender as ComboBox;
+            var cb = sender as System.Windows.Controls.ComboBox;
 
             cb.Items.Clear();
 
@@ -133,6 +133,33 @@ namespace OpenOCD_Helper
             p.BeginErrorReadLine();
 
             
+        }
+
+        private void ButtonPathCustomOpenOCD_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFolderDialog dialog = new Microsoft.Win32.OpenFolderDialog
+            {
+                Title = "Select OpenOCD folder"
+            };
+            var result = dialog.ShowDialog();
+        }
+
+        private void ButtonPathCustomTarget_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFolderDialog dialog = new Microsoft.Win32.OpenFolderDialog
+            {
+                Title = "Select target folder"
+            };
+            var result = dialog.ShowDialog();
+        }
+
+        private void ButtonPathCustomOpenInterface_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFolderDialog dialog = new Microsoft.Win32.OpenFolderDialog
+            {
+                Title = "Select interface folder"
+            };
+            var result = dialog.ShowDialog();
         }
     }
 }

@@ -44,13 +44,13 @@
                 <Label Content="Interface path:" Grid.Row="2"></Label>
 
                 <Border Grid.Row="0" Grid.Column="1" Margin="5,5,5,5">
-                    <Button Content="Custom"></Button>
+                    <Button x:Name="ButtonPathCustomOpenOCD" Content="Custom" Click="ButtonPathCustomOpenOCD_Click"></Button>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="1" Margin="5,5,5,5">
-                    <Button Content="Custom"></Button>
+                    <Button x:Name="ButtonPathCustomTarget" Content="Custom" Click="ButtonPathCustomTarget_Click"></Button>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="1" Margin="5,5,5,5">
-                    <Button Content="Custom"></Button>
+                    <Button x:Name="ButtonPathCustomOpenInterface" Content="Custom" Click="ButtonPathCustomOpenInterface_Click"></Button>
                 </Border>
 
             </Grid>
