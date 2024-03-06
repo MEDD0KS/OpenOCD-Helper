@@ -33,8 +33,6 @@ namespace OpenOCD_Helper
         {
             InitializeComponent();
 
-
-
             foreach (string? path in Environment.GetEnvironmentVariable("PATH").Split(';'))
             {
                 if (Directory.Exists(path))
@@ -51,22 +49,39 @@ namespace OpenOCD_Helper
 
                             pathTarget = Directory.GetDirectories(pathOpenOcdDirectory, "*.*", searchOption: SearchOption.AllDirectories).Where(res => res.EndsWith("target")).ToArray().FirstOrDefault();
 
-                            
-
-                            //break;
                             return;
                         }
                     }
-                }
-                
+                }                
             }
 
+            if (pathOpenOCD == null)
+            {
+                //var result = MessageBox.Show("OpenOCD variable PATH not found \nUse custom path in program");
+
+                return;
+            }
+
+            if (pathInterface == null)
+            {
+                //var result = MessageBox.Show("Interface path not found \nUse custom path in program");
+                return;
+            }
+
+            if(pathTarget == null)
+            {
+                //var result = MessageBox.Show("Interface path not found \nUse custom path in program");
+                return;
+            }
+
+
+            
         }
 
         private void CbDevice_DropDownOpened(object sender, EventArgs e)
         {
             string folderPath = "D:\\GD_Flasher\\OpenOCD-20230202-0.12.0\\share\\openocd\\scripts\\target"; // Укажите свой путь к папке
-            var cb = sender as System.Windows.Controls.ComboBox;
+            var cb = sender as ComboBox;
 
             cb.Items.Clear();
 
@@ -142,11 +157,17 @@ namespace OpenOCD_Helper
 
         private void ButtonPathCustomOpenOCD_Click(object sender, RoutedEventArgs e)
         {
+
             Microsoft.Win32.OpenFolderDialog dialog = new Microsoft.Win32.OpenFolderDialog
             {
                 Title = "Select OpenOCD folder"
+                
             };
-            var result = dialog.ShowDialog();
+            if (dialog.ShowDialog() == true)
+            {
+                var test = dialog.FolderName;
+            }
+
         }
 
         private void ButtonPathCustomTarget_Click(object sender, RoutedEventArgs e)
@@ -155,7 +176,10 @@ namespace OpenOCD_Helper
             {
                 Title = "Select target folder"
             };
-            var result = dialog.ShowDialog();
+            if (dialog.ShowDialog() == true)
+            {
+                var test = dialog.FolderName;
+            }
         }
 
         private void ButtonPathCustomOpenInterface_Click(object sender, RoutedEventArgs e)
@@ -164,7 +188,10 @@ namespace OpenOCD_Helper
             {
                 Title = "Select interface folder"
             };
-            var result = dialog.ShowDialog();
+            if (dialog.ShowDialog() == true)
+            {
+                var test = dialog.FolderName;
+            }
         }
     }
 }

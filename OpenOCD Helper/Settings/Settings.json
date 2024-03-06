@@ -1,0 +1,12 @@
+{
+  "pathOpenOCD": "1",
+  "pathTarget": "3",
+  "pathInterface": "2",
+  "nameInterface": "cmsis-dap.cfg",
+  "nameTarget": "stm32f4x.cfg",
+  "typeTransportInterface": "swd",
+  "pathFlashWriteFile": "",
+  "valueFlashOffset": 0,
+  "valueFlashStartAdr": 134217728,
+  "pathFlashReadFile": ""
+}

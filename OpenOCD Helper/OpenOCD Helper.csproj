@@ -10,4 +10,10 @@
     <UseWindowsForms>False</UseWindowsForms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Update="Settings\Settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
