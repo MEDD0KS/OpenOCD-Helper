@@ -24,9 +24,9 @@ namespace OpenOCD_Helper
     /// </summary>
     public partial class MainWindow : Window
     {
-        string pathOpenOCD;
-        string pathTools;
-        string pathInterface;
+        string? pathOpenOCD;
+        string? pathTarget;
+        string? pathInterface;
 
 
         public MainWindow()
@@ -45,11 +45,16 @@ namespace OpenOCD_Helper
                         {
                             pathOpenOCD = path + "\\openocd.exe";
 
-                            var test = path.Substring(0, path.LastIndexOf("\\"));
+                            var pathOpenOcdDirectory = path.Substring(0, path.LastIndexOf("\\"));
 
-                            var test2 = Directory.GetDirectories(test, "*.*", searchOption: SearchOption.AllDirectories).Where(res => res.Contains("interface")).ToString();
+                            pathInterface = Directory.GetDirectories(pathOpenOcdDirectory, "*.*", searchOption: SearchOption.AllDirectories).Where(res => res.EndsWith("interface")).ToArray().FirstOrDefault();
 
-                            break;
+                            pathTarget = Directory.GetDirectories(pathOpenOcdDirectory, "*.*", searchOption: SearchOption.AllDirectories).Where(res => res.EndsWith("target")).ToArray().FirstOrDefault();
+
+                            
+
+                            //break;
+                            return;
                         }
                     }
                 }
